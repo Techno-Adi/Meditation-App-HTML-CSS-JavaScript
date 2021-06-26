@@ -1,0 +1,249 @@
+/* ALL */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* APP */
+.app {
+  width: 100vw;
+  height: 100vh;
+
+  transition: opacity 500ms ease-in-out;
+  opacity: 1;
+}
+.inactive {
+  opacity: 0.0001;
+}
+
+/* VIDEO */
+.video {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
+}
+.video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* DURATIONS GENERAL */
+.durations .durations-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 25%;
+}
+.durations .durations-container .duration {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.durations .durations-container .duration p {
+  margin-top: 15px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 0px 0px 15px#000;
+}
+.durations .durations-container .duration img {
+  height: 75px;
+  height: 75px;
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+/* AUDIO GENERAL */
+.audio {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.audio .play,
+.pause {
+  cursor: pointer;
+}
+.audio .play svg,
+.pause svg {
+  width: 50px;
+  height: 50px;
+}
+.audio .progress {
+  width: 200px;
+  height: 200px;
+  margin: 0 40px;
+  position: relative;
+}
+.audio .progress svg {
+  transform: rotate(45deg);
+  position: absolute;
+}
+.audio .progress .audio-remaining-time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+/* SEASONS GENERAL */
+.seasons .seasons-container .season {
+  cursor: pointer;
+}
+
+/* SCREEN WIDTH > 601px */
+@media screen and (min-width: 601px) {
+  /* APP */
+  .app {
+    display: grid;
+    grid-template-areas:
+      "a a a a s s"
+      "a a a a s s"
+      "d d d d s s"
+      "d d d d s s";
+  }
+
+  /* AUDIO */
+  .audio {
+    grid-area: a;
+  }
+
+  /* DURATIONS */
+  .durations {
+    grid-area: d;
+  }
+
+  /* SEASONS */
+  .seasons {
+    grid-area: s;
+  }
+  .seasons .seasons-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40% 0;
+  }
+  .seasons .seasons-container .season img {
+    height: 75px;
+    height: 75px;
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+  .toggle-seasons {
+    display: none;
+  }
+}
+
+/* SCREEN WIDTH < 600px */
+@media screen and (max-width: 600px) {
+  /* VIDEO */
+  .video video {
+    height: 100%;
+  }
+
+  /* APP */
+  .app {
+    display: grid;
+
+    grid-template-areas:
+      "a"
+      "a"
+      "a"
+      "d";
+
+    position: relative;
+  }
+
+  /* AUDIO */
+  .audio {
+    grid-area: a;
+  }
+
+  /* DURATIONS */
+  .durations {
+    grid-area: d;
+  }
+  .duration .durations-container {
+    padding: 0 10%;
+  }
+
+  /* SEASONS */
+  .seasons {
+    width: 305px;
+    position: absolute;
+    top: 20px;
+    left: -255px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 1px 1px 15px 0px #000;
+    border-radius: 0 5px 5px 0;
+    transition: left 500ms ease-in-out;
+  }
+  .seasons-menu-open {
+    left: 0;
+  }
+  .seasons .seasons-container {
+    display: flex;
+  }
+  .seasons .seasons-container .season {
+    margin-left: 10px;
+  }
+  .seasons .seasons-container .season img {
+    height: 50px;
+    height: 50px;
+  }
+
+  /* TOGGLE SEASONS MENU BUTTON */
+  .toggle-seasons {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+  }
+  .toggle-seasons .arrow {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: all 500ms ease-in-out;
+    cursor: pointer;
+  }
+  .arrow-rotate {
+    transform: rotate(-180deg);
+  }
+  .toggle-seasons .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .toggle-seasons .arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
